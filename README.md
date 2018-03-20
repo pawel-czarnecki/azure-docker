@@ -36,7 +36,7 @@ az vm list-ip-addresses -g myrg -n myvm --output table
 2. Login via SSH using Putty.
 3. Install Docker according to the documentation for Ubuntu: https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository
 
-## Run linux in container
+## Run Linux in container
 1. Get from the docker repository lightweight linux distribution.
 ```
 docker pull alpine
@@ -54,7 +54,7 @@ docker run -it alpine /bin/sh
 ls -l
 ```
 
-## Create python application in container
+## Create Python application in container
 1. Pull application from repository.
 ```
 git clone https://github.com/pawel-czarnecki/azure-docker.git
@@ -87,7 +87,7 @@ sudo docker build -t python-api .
 ```
 docker image ls
 ```
-5. Run application container in detached mode.
+5. Run container in detached mode.
 ```
 docker run --rm -d -p 8080:8080 python-api
 ```
@@ -101,7 +101,7 @@ docker ps
 ```
 <your-public-ip-address>:8080
 ```
-8. Go into application container.
+8. Enter running container.
 ```
 docker exec -it <id-or-container-name> bash
 ```
@@ -110,7 +110,7 @@ docker exec -it <id-or-container-name> bash
 docker stop <id-or-container-name>
 ```
 
-## Other usefull commands
+## Other usefull Docker commands
 1. Removing container.
 ```
 docker rm <id-or-container-name>
