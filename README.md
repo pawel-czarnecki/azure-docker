@@ -64,16 +64,16 @@ git clone https://github.com/pawel-czarnecki/azure-docker.git
 # Install the latest python version from the repository
 FROM python
 
-# Create appication directory
+# Set appication directory
 WORKDIR /app
 
-# Move all application files to docker directory
+# Move all application files into the container
 COPY app /app
 
 # Install all dependencies
 RUN pip install -r requirements.txt
 
-# Listen network port
+# Make port 8080 available to the world outside this container
 EXPOSE 8080
 
 # Execute the command when running image
