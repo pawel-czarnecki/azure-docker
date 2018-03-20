@@ -57,7 +57,7 @@ ls -l
 ## Create python application in container
 1. Pull application from repository.
 ```
-https://github.com/pawel-czarnecki/azure-docker.git
+git clone https://github.com/pawel-czarnecki/azure-docker.git
 ```
 2. Create Dockerfile for creating application image
 ```
