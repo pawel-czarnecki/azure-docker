@@ -22,7 +22,7 @@ az vm create --resource-group myrg --name myvm --image UbuntuLTS --admin-usernam
 ```
 az vm image list --output table
 ```
-* For checking available different configuration of VM do.
+* For checking different configuration of Virtual Machine do.
 ```
 az vm list-sizes --location eastus --output table
 ```
