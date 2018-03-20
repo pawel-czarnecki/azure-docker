@@ -6,7 +6,7 @@
 3. macOS: https://docs.microsoft.com/pl-pl/cli/azure/install-azure-cli-macos?view=azure-cli-latest
 
 ## Setting up Virtual Machine
-1. Log in through Azure CLI:
+1. Log in through Azure CLI.
 ```
 az login
 ```
@@ -18,18 +18,18 @@ az group create --name myrg --location eastus
 ```
 az vm create --resource-group myrg --name myvm --image UbuntuLTS --admin-username user --admin-password 'H4$$sło' --size Standard_DS2_v2
 ```
-* For checking different available images you can use:
+* For checking different available images do.
 ```
 az vm image list --output table
 ```
-* For checking available different configuration of VM you can use:
+* For checking available different configuration of VM do.
 ```
 az vm list-sizes --location eastus --output table
 ```
 
 ## Docker installation on Virtual Machine
 1. Install Putty: https://the.earth.li/~sgtatham/putty/latest/w32/putty-0.70-installer.msi
-2. Check public IP address your Virtual Machine:
+2. Check public IP address your Virtual Machine.
 ```
 az vm list-ip-addresses -g myrg -n myvm --output table
 ```
@@ -37,22 +37,75 @@ az vm list-ip-addresses -g myrg -n myvm --output table
 3. Install Docker according to the documentation for Ubuntu: https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository
 
 ## Create simple linux container
-1. Get from the docker repository lightweight linux distribution
+1. Get from the docker repository lightweight linux distribution.
 ```
 docker pull alpine
 ```
-2. Check all images pulled from repository
+2. Check all images pulled from repository.
 ```
 docker image ls
 ```
-3. Run and go into linux container
+3. Run and go into linux container.
 ```
 docker run -it alpine /bin/sh
 ```
-4. View all directories
+4. View all directories.
 ```
 ls -l
 ```
 
-## Create python app container
+## Create python application container
+1. Pull application from repository.
+```
+https://github.com/pawel-czarnecki/azure-docker.git
+```
+2. Create Dockerfile for creating application image
+```
+# Install the latest python version from the repository
+FROM python
 
+# Create appication directory
+WORKDIR /app
+
+# Move all application files to docker directory
+COPY app /app
+
+# Install all dependencies
+RUN pip install -r requirements.txt
+
+# Listen network port
+EXPOSE 8080
+
+# Execute the command when running image
+CMD [ "python", "api.py" ]
+```
+3. Make image based on Dockerfile. Name of its is python-api.
+```
+sudo docker build -t python-api .
+```
+4. Check if the image has been created.
+```
+docker image ls
+```
+5. Run application container in detached mode.
+```
+docker run --rm -d -p 8080:8080 python-api
+```
+6. Check running containers.
+```
+docker container ls
+or
+docker ps
+```
+7. Run application in webbrowser.
+```
+<your-public-ip-address>:8080
+```
+8. Go into application container.
+```
+docker exec -it <id-or-container-name> bash
+```
+9. Stop container.
+```
+docker stop <id-or-container-name>
+```
