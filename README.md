@@ -16,7 +16,7 @@ az group create --name myrg --location eastus
 ```
 3. Create Virtual Machine. We are installing Ubuntu LTS on Standard_DS2_v2 type of VM.
 ```
-az vm create --resource-group myrg --name myvm --image UbuntuLTS --admin-username student --admin-password 'P@ssw0rd1234' --size Standard_DS2_v2
+az vm create --resource-group myrg --name myvm --image UbuntuLTS --admin-username user --admin-password 'H4$$sło' --size Standard_DS2_v2
 ```
 * For checking different available images you can use:
 ```
@@ -35,3 +35,24 @@ az vm list-ip-addresses -g myrg -n myvm --output table
 ```
 2. Login via SSH using Putty.
 3. Install Docker according to the documentation for Ubuntu: https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository
+
+## Create simple linux container
+1. Get from the docker repository lightweight linux distribution
+```
+docker pull alpine
+```
+2. Check my all images
+```
+docker image ls
+```
+3. Run and go into linux container
+```
+docker run -it alpine /bin/sh
+```
+4. View all directories
+```
+ls -l
+```
+
+## Create python app container
+
