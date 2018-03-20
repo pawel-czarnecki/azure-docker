@@ -41,7 +41,7 @@ az vm list-ip-addresses -g myrg -n myvm --output table
 ```
 docker pull alpine
 ```
-2. Check my all images
+2. Check all images pulled from repository
 ```
 docker image ls
 ```
